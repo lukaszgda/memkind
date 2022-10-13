@@ -62,10 +62,6 @@ jobs:
               curlJsonBuildOutput=`curl --insecure -u $jenkins_user:$jenkins_token ${job}api/json | jq -r '.building'`
             done
 
-        - name: Show Jenkins job log
-          run: |
-            curl --insecure -u $jenkins_user:$jenkins_token ${{ env.job }}consoleText
-
         - name: Validating job's status
           run: |
             curlJsonResultOutput=`curl --insecure -u $jenkins_user:$jenkins_token ${{ env.job }}api/json | jq -r '.result'`
